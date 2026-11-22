@@ -27,3 +27,18 @@ def get_cbr_rates(date_str: str | None = None) -> dict[str, Decimal]:
 
 rates = get_cbr_rates()
 
+print('''Типы:
+1. RUB -> [val]
+2. [val] -> RUB
+''')
+typ = int(input("Введите тип(1-2): "))
+if typ == 1:
+    val = str(input("Введите конечную валюту: "))
+    print(f"RUB -> {val}")
+    val2 = input("Введите количество: ")
+    print(Decimal(val2) / rates[val])
+else:
+    val = str(input("Введите начальная валюту: "))
+    print(f"{val} -> RUB")
+    val2 = int(input("Введите количество: "))
+    print(Decimal(val2) * rates[val])
